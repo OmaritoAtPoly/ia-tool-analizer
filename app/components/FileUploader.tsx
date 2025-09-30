@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { formatSize } from '../lib/utils';
 
 interface FileUploaderProps {
-    onFileSelect?: (file: File | null) => void;
+    onFileSelect: (file: File | null) => void;
     file: File | null;
 }
 
@@ -12,7 +12,7 @@ const FileUploader = ({ onFileSelect, file }: FileUploaderProps) => {
     const onDrop = useCallback((acceptedFiles: File[]) => {
 
         const file = acceptedFiles[0] || null;
-        onFileSelect?.(file);
+        onFileSelect(file);
 
     }, [onFileSelect]);
 
@@ -30,7 +30,7 @@ const FileUploader = ({ onFileSelect, file }: FileUploaderProps) => {
     }
 
     const handleOnRemoveFile = (event: React.MouseEvent<HTMLButtonElement>) => {
-        onFileSelect?.(null)
+        onFileSelect(null)
     }
 
     return (
